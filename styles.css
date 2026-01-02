@@ -1,0 +1,96 @@
+:root{--bg:#0b0d0e;--text:#cffefe;--accent:#00fbff;--teal:#19c6a4;--muted:rgba(207,254,254,0.55)}
+/* Reset / Base */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial;background:radial-gradient(1200px 400px at 85% 10%, rgba(0,251,255,0.03), transparent 12%), radial-gradient(800px 320px at 10% 85%, rgba(25,198,164,0.03), transparent 10%), linear-gradient(180deg,#050607 0%,#0b0d0e 100%);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* Layout */
+.container{max-width:1200px;margin:0 auto;padding:0 5%}
+section{padding:84px 0}
+
+/* Topbar */
+.topbar{position:sticky;top:0;z-index:1200;backdrop-filter:blur(8px) saturate(120%);background:linear-gradient(180deg,rgba(11,13,14,0.65),rgba(11,13,14,0.45));border-bottom:1px solid rgba(255,255,255,0.08)}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+.brand{font-weight:700;font-size:20px;color:var(--accent)}
+nav a{color:var(--muted);text-decoration:none;margin-left:18px;padding:8px 12px;border-radius:10px;transition:color .22s,transform .22s;font-weight:600;font-size:14px;position:relative;display:inline-block}
+nav a::after{content:"";position:absolute;left:12px;right:12px;bottom:8px;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left center;transition:transform .22s,opacity .22s;opacity:0;border-radius:2px}
+nav a:hover::after,nav a:focus::after{transform:scaleX(1);opacity:.95}
+nav a:hover{color:var(--text);transform:translateY(-3px);box-shadow:0 8px 24px rgba(25,198,164,0.06);background:linear-gradient(90deg,rgba(25,198,164,0.04),rgba(0,251,255,0.02))}
+
+/* Hero */
+.hero{min-height:88vh;display:flex;align-items:center;position:relative;overflow:visible}
+.hero-background{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(800px 420px at 50% 36%,rgba(25,198,164,0.62),rgba(0,251,255,0.18) 30%,transparent 55%),radial-gradient(600px 320px at 12% 84%,rgba(0,251,255,0.10),transparent 30%),linear-gradient(180deg,rgba(11,13,14,0.98),rgba(7,8,9,0.96));mix-blend-mode:screen;filter:blur(36px)}
+.hero-content{position:relative;z-index:2;max-width:980px;margin:60px auto 0;text-align:center;padding:28px;opacity:0;transform:translateY(12px);transition:opacity .64s cubic-bezier(.2,.9,.2,1),transform .64s cubic-bezier(.2,.9,.2,1)}
+body.loaded .hero-content{opacity:1;transform:none}
+.hero-title-plain{display:block;font-size:56px;color:rgba(200,255,250,0.92)}
+.hero-title-em{display:block;font-size:96px;background:linear-gradient(90deg,rgba(25,198,164,1),rgba(0,251,255,1));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 46px 220px rgba(0,251,255,0.34),0 12px 46px rgba(0,0,0,0.9)}
+.hero-sub{margin:0 auto 28px;font-size:18px;color:rgba(207,254,254,0.98);max-width:760px}
+.hero-actions{display:inline-flex;gap:14px;align-items:center;justify-content:center}
+
+/* Buttons */
+.btn-primary{display:inline-block;padding:14px 24px;border-radius:12px;font-weight:800;font-size:15px;color:#021010;background:linear-gradient(90deg,rgba(25,198,164,1),rgba(0,251,255,1));box-shadow:0 40px 160px rgba(25,198,164,0.46),0 12px 48px rgba(0,0,0,0.72);border:1px solid rgba(255,255,255,0.06);text-decoration:none}
+.btn-ghost{display:inline-block;padding:12px 18px;border-radius:10px;color:rgba(207,254,254,0.9);border:1px solid rgba(255,255,255,0.04);background:transparent;font-weight:700}
+
+/* Grid / Cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:26px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0));border:1px solid rgba(255,255,255,0.08);padding:26px;border-radius:14px;transition:transform .42s cubic-bezier(.2,.9,.2,1),box-shadow .42s cubic-bezier(.2,.9,.2,1),border-color .42s cubic-bezier(.2,.9,.2,1);box-shadow:0 18px 36px rgba(2,6,8,0.6);backdrop-filter:blur(4px);overflow:hidden;will-change:transform,opacity;opacity:0;transform:translateY(18px) scale(.998);position:relative}
+.card.in-view{opacity:1;transform:none}
+
+/* Soft glow overlay for subtle premium sheen */
+.card::before{content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;background:linear-gradient(180deg,rgba(0,251,255,0.06),rgba(25,198,164,0.03));opacity:0;transition:opacity .42s cubic-bezier(.2,.9,.2,1)}
+.card:hover::before{opacity:1}
+
+/* Hover interaction: lift, shadow & border highlight */
+.card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 36px 96px rgba(0,251,255,0.07),0 24px 46px rgba(2,6,8,0.7);border-color:rgba(0,251,255,0.08)}
+.card:focus-within{transform:translateY(-6px);box-shadow:0 30px 80px rgba(0,251,255,0.05)}
+
+/* Staggered entrance for Services cards (slightly more rhythmic) */
+#services .grid .card:nth-child(1){transition-delay:.14s}
+#services .grid .card:nth-child(2){transition-delay:.28s}
+#services .grid .card:nth-child(3){transition-delay:.42s}
+#services .grid .card:nth-child(4){transition-delay:.56s}
+
+/* Vision */
+.vision{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);padding-top:96px;padding-bottom:96px;opacity:0;transform:translateY(12px);transition:opacity .48s cubic-bezier(.2,.9,.2,1),transform .48s cubic-bezier(.2,.9,.2,1)}
+.vision.in-view{opacity:1;transform:none}
+
+/* About section entrance (soft fade-in with slight delay) */
+#about{opacity:0;transform:translateY(14px);transition:opacity .56s cubic-bezier(.2,.9,.2,1) .08s,transform .56s cubic-bezier(.2,.9,.2,1) .08s}
+#about.in-view{opacity:1;transform:none}
+
+/* Footer */
+footer{padding:48px 0;text-align:center;background:#080a0b;color:#9aa3a7;font-size:14px}
+
+/* Contact */
+.contact-section{padding:72px 0}
+.contact-card{display:flex;align-items:center;justify-content:space-between;gap:22px;background:linear-gradient(180deg,rgba(255,255,255,0.014),rgba(255,255,255,0));border:1px solid rgba(255,255,255,0.06);padding:26px;border-radius:14px;box-shadow:0 20px 36px rgba(2,6,8,0.6);backdrop-filter:blur(6px);opacity:0;transform:scale(.985) translateY(8px);transition:opacity .5s cubic-bezier(.2,.9,.2,1),transform .5s cubic-bezier(.2,.9,.2,1),box-shadow .4s cubic-bezier(.2,.9,.2,1)}
+.contact-card.in-view{opacity:1;transform:none;box-shadow:0 36px 96px rgba(0,251,255,0.06),0 20px 48px rgba(2,6,8,0.72)}
+.contact-copy h2{font-size:28px;margin-bottom:6px;color:var(--text);font-weight:800}
+.contact-copy p{color:var(--muted);margin:0}
+.contact-actions{display:flex;gap:12px;align-items:center}
+
+/* Contact CTA micro-interaction: subtle pulse/ring on hover */
+.contact-actions .btn-primary{position:relative;z-index:2;overflow:visible}
+.contact-actions .btn-primary::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(0.98);width:calc(100% + 18px);height:calc(100% + 12px);border-radius:16px;border:1px solid rgba(0,251,255,0.10);box-shadow:0 18px 48px rgba(0,251,255,0.06);opacity:0;pointer-events:none;transition:opacity .28s cubic-bezier(.2,.9,.2,1),transform .28s cubic-bezier(.2,.9,.2,1)}
+.contact-actions .btn-primary:hover::after,.contact-actions .btn-primary:focus::after{opacity:1;transform:translate(-50%,-50%) scale(1.04);animation:contactPulse .9s cubic-bezier(.2,.9,.2,1)}
+
+@keyframes contactPulse{from{opacity:.9;transform:translate(-50%,-50%) scale(1.02)}50%{opacity:.35;transform:translate(-50%,-50%) scale(1.08)}to{opacity:0;transform:translate(-50%,-50%) scale(1.12)}}
+
+/* CTA button hover polish */
+.btn-primary{transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .28s cubic-bezier(.2,.9,.2,1)}
+.btn-primary:hover,.btn-primary:focus{transform:translateY(-5px) scale(1.02);box-shadow:0 48px 160px rgba(25,198,164,0.5),0 18px 56px rgba(0,0,0,0.6)}
+.btn-ghost{transition:transform .26s cubic-bezier(.2,.9,.2,1),box-shadow .26s cubic-bezier(.2,.9,.2,1),border-color .26s cubic-bezier(.2,.9,.2,1)}
+.btn-ghost:hover,.btn-ghost:focus{transform:translateY(-4px);box-shadow:0 26px 56px rgba(2,6,8,0.45);border-color:rgba(255,255,255,0.08)}
+.contact-actions{display:flex;gap:12px;align-items:center}
+@media (max-width:720px){.contact-card{flex-direction:column;align-items:stretch;text-align:center}.contact-actions{justify-content:center}}
+
+/* Performance hint */
+.hero { will-change: transform, opacity; }
+
+/* Typography & spacing refinement */
+h2{font-weight:800;margin-bottom:18px;letter-spacing:0.2px}
+p{line-height:1.9;margin-bottom:18px;color:inherit}
+
+/* Media / Motion */
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}.card,.hero-content{opacity:1!important;transform:none!important}}
+@media (max-width:920px){.hero-title-plain{font-size:28px}.hero-title-em{font-size:38px}.hero-sub{font-size:15px}.hero h1{font-size:52px}}

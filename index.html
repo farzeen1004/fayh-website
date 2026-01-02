@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>FAYH – Building Digital Futures</title>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<div id="root">
+			<header class="topbar">
+				<div class="container topbar-inner">
+					<div class="brand">FAYH</div>
+					<nav aria-label="Primary navigation">
+						<a href="#services">Services</a>
+						<a href="#about">About</a>
+						<a href="#contact">Contact</a>
+					</nav>
+				</div>
+			</header>
+
+			<main>
+				<section class="hero" aria-label="FAYH Solutions hero">
+					<div class="hero-background" aria-hidden="true"></div>
+					<div class="container">
+						<div class="hero-content">
+							<h1 class="hero-title"><span class="hero-title-plain">FAYH</span><span class="hero-title-em">Solutions</span></h1>
+							<p class="hero-sub">Building Digital Futures through modern technology, scalable systems, and full e-commerce solutions.</p>
+							<div class="hero-actions">
+								<a href="#contact" class="btn-primary">Contact Us</a>
+								<a href="#services" class="btn-ghost">Our Services</a>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="vision">
+					<div class="container">
+						<h2>Vision & Mission</h2>
+						<p>Our vision is to empower businesses with technology that scales. Our mission is to deliver clean, reliable, and future-ready digital solutions.</p>
+					</div>
+				</section>
+
+				<section>
+					<div class="container">
+						<h2>What We Do</h2>
+						<div class="grid">
+							<div class="card"><h3>Digital Solutions</h3><p>Custom-built systems designed for performance and growth.</p></div>
+							<div class="card"><h3>Modern Interfaces</h3><p>Clean UI/UX focused on clarity and user experience.</p></div>
+							<div class="card"><h3>Scalable Tech</h3><p>Future-ready architecture for long-term success.</p></div>
+						</div>
+					</div>
+				</section>
+
+				<section id="services">
+					<div class="container">
+						<h2>Services</h2>
+						<div class="grid">
+							<div class="card"><h3>Web Development</h3><p>Fast, secure, and modern websites.</p></div>
+							<div class="card"><h3>Full E-commerce Setup</h3><p>Complete online store solutions.</p></div>
+							<div class="card"><h3>UI / UX Design</h3><p>Designs that convert and scale.</p></div>
+						</div>
+					</div>
+				</section>
+
+				<section id="about">
+					<div class="container">
+						<h2>About FAYH</h2>
+						<p>FAYH is a technology-driven company focused on delivering reliable, scalable, and modern digital solutions for businesses in the digital era.</p>
+					</div>
+				</section>
+			</main>
+
+			<section id="contact" class="contact-section" aria-label="Contact Us">
+				<div class="container">
+					<div class="contact-card">
+						<div class="contact-copy">
+							<h2>Contact Us</h2>
+							<p>Talk to FAYH Solutions today</p>
+						</div>
+						<div class="contact-actions">
+							<a href="tel:7907380837" class="btn-primary" aria-label="Call FAYH Solutions 7907380837">Call Now</a>
+							<a href="mailto:contact@fayh.com" class="btn-ghost">Email Us</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<footer>© 2026 FAYH. Building Digital Futures.</footer>
+		</div>
+
+		<script>
+			(function(){
+				document.addEventListener('DOMContentLoaded', function(){
+					requestAnimationFrame(function(){ document.body.classList.add('loaded'); });
+					var reveals = Array.prototype.slice.call(document.querySelectorAll('.card, .vision, #about, .contact-card'));
+					if (!('IntersectionObserver' in window)) { reveals.forEach(function(c){ c.classList.add('in-view'); }); return; }
+					var io = new IntersectionObserver(function(entries, obs){
+						entries.forEach(function(entry){
+							if (entry.isIntersecting) { entry.target.classList.add('in-view'); obs.unobserve(entry.target); }
+						});
+					}, { threshold: 0.12 });
+					reveals.forEach(function(el){ io.observe(el); });
+				});
+			})();
+		</script>
+	</body>
+</html>
